@@ -21,4 +21,4 @@ This is my personal portfolio website, built with **HTML**, **CSS**, and **JavaS
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/GouthamGopu/Portfolio.git
+   git clone https://github.com/manideep81215/Portfolio.git
