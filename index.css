@@ -12,16 +12,18 @@ h1{
   cursor: default;
 }
 body {
-  background-color: black;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   color: white;
+  overflow-x: hidden;
 }
 
 #header {
   width: 100%;
   height: 100vh;
-  background-image: url(images/linkedin.jpg);
+  background-image: linear-gradient(rgba(15, 15, 35, 0.5), rgba(20, 20, 40, 0.5)), url(images/linkedin.jpg);
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 
 .container {
@@ -38,8 +40,10 @@ nav {
   top: 0px;
   left: 0px;
   right: 0px;
-  background-color: black;
+  background: rgba(0, 0, 0, 0.9);
   z-index: 10000;
+  box-shadow: 0 2px 20px rgba(255, 0, 79, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -57,17 +61,20 @@ nav ul li a {
   text-decoration: none;
   font-size: 18px;
   position: relative;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 nav ul li a::after {
   content: '';
   width: 0;
   height: 3px;
-  background: #ff004f;
+  background: linear-gradient(90deg, #ff004f, #ff6b9d);
   position: absolute;
   left: 0;
   bottom: -6px;
-  transition: 0.5s;
+  transition: 0.5s ease;
+  border-radius: 2px;
 }
 
 nav ul li a:hover::after {
@@ -77,21 +84,50 @@ nav ul li a:hover::after {
 .header-text {
   margin-top: 40%;
   font-size: 30px;
+  animation: fadeInUp 1s ease;
 }
 
 .header-text h1 {
   font-size: 60px;
   margin-top: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .header-text h1 span {
-  color: red;
+  background: linear-gradient(90deg, #ff004f, #ff6b9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 79, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 0, 79, 0.6));
+  }
 }
 
 /*----About Section-----*/
 #about {
   padding: 80px 0;
   color: #ababab;
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.5) 0%, rgba(30, 30, 60, 0.3) 100%);
 }
 
 .row {
@@ -108,6 +144,13 @@ nav ul li a:hover::after {
 .about-col-1 img {
   width: 100%;
   border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(255, 0, 79, 0.3);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.about-col-1 img:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(255, 0, 79, 0.5);
 }
 
 .about-col-2 {
@@ -118,7 +161,11 @@ nav ul li a:hover::after {
   font-size: 60px;
   font-weight: 600;
   color: white;
-
+  background: linear-gradient(90deg, #ffffff, #ff6b9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
 }
 
 .tab-titles {
@@ -132,17 +179,24 @@ nav ul li a:hover::after {
   font-weight: 500;
   cursor: pointer;
   position: relative;
+  color: #ababab;
+  transition: color 0.3s ease;
+}
+
+.tab-links:hover {
+  color: white;
 }
 
 .tab-links::after {
   content: '';
   width: 0;
   height: 3px;
-  background: #ff004f;
+  background: linear-gradient(90deg, #ff004f, #ff6b9d);
   position: absolute;
   left: 0;
   bottom: -8px;
-  transition: 0.5s;
+  transition: 0.5s ease;
+  border-radius: 2px;
 }
 
 .tab-links.active-link::after {
@@ -152,6 +206,15 @@ nav ul li a:hover::after {
 .tab-contents ul li {
   list-style: none;
   margin: 10px 0;
+  padding: 10px;
+  border-left: 3px solid #ff004f;
+  padding-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.tab-contents ul li:hover {
+  border-left-color: #ff6b9d;
+  padding-left: 20px;
 }
 
 .tab-contents ul li span {
@@ -170,6 +233,7 @@ nav ul li a:hover::after {
 /*----Services Section-----*/
 #services {
   padding: 30px 0;
+  background: linear-gradient(135deg, rgba(10, 10, 30, 0.8) 0%, rgba(20, 20, 40, 0.6) 100%);
 }
 
 .services-list {
@@ -180,24 +244,44 @@ nav ul li a:hover::after {
 }
 
 .services-list div {
-  background: #262626;
+  background: linear-gradient(135deg, #262626 0%, #1a1a2e 100%);
   padding: 40px;
   font-size: 13px;
   font-weight: 300;
   border-radius: 10px;
-  transition: background 0.5s, transform 0.5s;
+  transition: background 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+  border: 1px solid rgba(255, 0, 79, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-list div::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 0, 79, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .services-list div i {
   font-size: 40px;
   margin-bottom: 30px;
   margin-right: 20px;
+  color: #ff004f;
+  transition: all 0.3s ease;
 }
 
 .services-list div h2 {
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 15px;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
 }
 
 .services-list div a {
@@ -209,13 +293,24 @@ nav ul li a:hover::after {
 }
 
 .services-list div:hover {
-  background-color: #ff004f;
+  background: linear-gradient(135deg, #ff004f, #ff6b9d);
   transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(255, 0, 79, 0.4);
+}
+
+.services-list div:hover i {
+  transform: scale(1.2) rotate(10deg);
+  color: white;
+}
+
+.services-list div:hover::before {
+  opacity: 1;
 }
 
 /*----portfolio Section-----*/
 #portfolio {
   padding: 50px 0;
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.5) 0%, rgba(30, 30, 60, 0.3) 100%);
 }
 
 .work-list {
@@ -228,40 +323,48 @@ nav ul li a:hover::after {
 .work {
   border-radius: 10px;
   position: relative;
-  overflow: hidden; /* Ensure content stays within bounds */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.5s ease;
+  cursor: pointer;
 }
 
 .work img {
   width: 100%;
   border-radius: 10px;
   display: block;
-  transition: transform 0.5s;
-  position: relative; /* Ensure overlay is positioned relative to the image */
+  transition: transform 0.5s ease;
+  position: relative;
+  filter: brightness(0.9);
 }
 
 .layer {
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, #ff004f);
   border-radius: 10px;
-  position: absolute; /* Position overlay within the image */
-  top: 0; /* Align with the top of the image */
-  left: 0; /* Align with the left of the image */
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 20px; /* Adjust padding as needed */
+  padding: 20px;
   text-align: center;
   font-size: 14px;
-  transition: opacity 0.5s;
-  opacity: 0; /* Hide by default */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
+  opacity: 0;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
 }
 
 .layer h3 {
   font-weight: 500;
   margin-bottom: 20px;
+  font-size: 24px;
+  color: white;
+  animation: slideInDown 0.5s ease;
 }
 
 .layer a {
@@ -275,14 +378,28 @@ nav ul li a:hover::after {
   height: 60px;
   border-radius: 50%;
   text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 79, 0.3);
+}
+
+.layer a:hover {
+  background: #ff004f;
+  color: white;
+  transform: scale(1.1) rotate(45deg);
+  box-shadow: 0 10px 30px rgba(255, 0, 79, 0.6);
 }
 
 .work:hover img {
   transform: scale(1.1);
+  filter: brightness(1.1);
 }
 
 .work:hover .layer {
-  opacity: 1; /* Show overlay on hover */
+  opacity: 1;
+}
+
+.work:hover {
+  box-shadow: 0 20px 60px rgba(255, 0, 79, 0.4);
 }
 
 /* Mobile styles */
@@ -304,19 +421,45 @@ nav ul li a:hover::after {
   display: block;
   margin: 50px auto;
   width: fit-content;
-  border: 1px solid #ff004f;
+  border: 2px solid #ff004f;
   padding: 14px 50px;
   border-radius: 6px;
   text-decoration: none;
   color: white;
-  transition: background 0.15s;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff004f, #ff6b9d);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 0;
 }
 
 .btn:hover {
-  background: #ff004f;
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 0, 79, 0.4);
+  transform: translateY(-3px);
 }
 
 /*----Contact Section-----*/
+#contact {
+  background: linear-gradient(135deg, rgba(10, 10, 30, 0.8) 0%, rgba(20, 20, 40, 0.6) 100%);
+}
+
 .contact-left {
   flex-basis: 35%;
   align-items: center;
@@ -332,13 +475,29 @@ nav ul li a:hover::after {
 .contact-left p {
   margin-top: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.contact-left p:hover {
+  background: rgba(255, 0, 79, 0.1);
+  padding-left: 25px;
 }
 
 .contact-left p i {
   cursor: pointer;
-  color: #ff004f;
+  background: linear-gradient(90deg, #ff004f, #ff6b9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-right: 15px;
   font-size: 25px;
+  transition: transform 0.3s ease;
+}
+
+.contact-left p:hover i {
+  transform: scale(1.2) rotate(10deg);
 }
 
 .social-icons {
@@ -351,17 +510,28 @@ nav ul li a:hover::after {
   margin-right: 15px;
   color: #ababab;
   display: inline-block;
-  transition: transform 0.5s;
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid transparent;
 }
 
 .social-icons a:hover {
-  color: #ff004f;
-  transform: translateY(-5px);
+  color: white;
+  background: linear-gradient(135deg, rgba(255, 0, 79, 0.2), rgba(255, 107, 157, 0.2));
+  transform: translateY(-5px) scale(1.1);
+  border-color: #ff004f;
+  box-shadow: 0 10px 25px rgba(255, 0, 79, 0.3);
 }
 
 .btn.btn2 {
   display: inline-block;
-  background: #ff004f;
+  background: linear-gradient(135deg, #ff004f, #ff6b9d);
+  border-color: #ff004f;
 }
 
 .contact-right form {
@@ -373,12 +543,26 @@ form textarea {
   width: 100%;
   border: 0;
   outline: none;
-  background: #262626;
+  background: linear-gradient(135deg, rgba(38, 38, 38, 0.8), rgba(26, 26, 46, 0.8));
   padding: 15px;
   margin-top: 15px;
   color: white;
   font-size: 18px;
   border-radius: 6px;
+  border: 1px solid rgba(255, 0, 79, 0.2);
+  transition: all 0.3s ease;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: #888;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #ff004f;
+  background: linear-gradient(135deg, rgba(38, 38, 38, 1), rgba(26, 26, 46, 1));
+  box-shadow: 0 0 15px rgba(255, 0, 79, 0.3);
 }
 
 form .btn2 {
@@ -391,13 +575,36 @@ form .btn2 {
   width: 100%;
   text-align: center;
   padding: 25px 0;
-  background: #262626;
+  background: linear-gradient(90deg, rgba(20, 20, 40, 0.8), rgba(40, 40, 60, 0.8));
   font-weight: 300;
   margin-top: 20px;
+  border-top: 1px solid rgba(255, 0, 79, 0.2);
 }
 
 .copyright i {
   color: #ff004f;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*----css for small screen----*/
@@ -407,7 +614,7 @@ nav .fa-solid {
 
 @media only screen and (max-width:1000px) {
   .btn{
-    background-color: #ff004f;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
   }
   .header-text {
     margin-top: 480px;
@@ -421,10 +628,12 @@ nav .fa-solid {
   nav .fa-solid {
     display: block;
     font-size: 25px;
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
   nav ul {
-    background: #ff004f;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
     position: fixed;
     top: 0;
     right: -200px;
@@ -432,7 +641,8 @@ nav .fa-solid {
     height: 100vh;
     padding-top: 50px;
     z-index: 2;
-    transition: right 0.5s;
+    transition: right 0.5s ease;
+    box-shadow: -5px 0 30px rgba(255, 0, 79, 0.3);
   }
 
   nav ul li {
@@ -450,10 +660,10 @@ nav .fa-solid {
 
 @media only screen and (max-width:600px) {
   .btn{
-    background-color: #ff004f;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
   }
   #header {
-    background-image: url(images/phone-goutham.png);
+    background-image: linear-gradient(rgba(15, 15, 35, 0.5), rgba(20, 20, 40, 0.5)), url(images/phone-goutham.png);
   }
   .header-text {
     margin-top: 480px;
@@ -471,7 +681,7 @@ nav .fa-solid {
   }
 
   nav ul {
-    background: #ff004f;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
     position: fixed;
     top: 0;
     right: -200px;
@@ -479,7 +689,8 @@ nav .fa-solid {
     height: 100vh;
     padding-top: 50px;
     z-index: 2;
-    transition: right 0.5s;
+    transition: right 0.5s ease;
+    box-shadow: -5px 0 30px rgba(255, 0, 79, 0.3);
   }
 
   nav ul li {
